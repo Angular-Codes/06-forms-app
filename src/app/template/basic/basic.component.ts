@@ -10,6 +10,12 @@ export class BasicComponent {
 
   @ViewChild('form') form!: NgForm;
 
+  initialForm = {
+    product : '',
+    price   : 0,
+    stock   : 0
+  }
+
   // onSubmit( form: NgForm ){
   //   console.log(form.value);
   // }
@@ -25,7 +31,10 @@ export class BasicComponent {
   }
 
   onSubmit(){
-    console.log(this.form);
+    console.log(this.form.value);
+    this.form.resetForm({
+      stock: 0
+    });
   }
 
 }

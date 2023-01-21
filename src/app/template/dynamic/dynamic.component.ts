@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class DynamicComponent {
 
+  save() {
+    console.log('Form print');
+  }
+
 }

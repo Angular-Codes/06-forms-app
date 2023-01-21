@@ -61,14 +61,18 @@
         <div class="col-sm-9">
           <!-- required
           customMin
-          [minimo]="0" -->
+          [minimo]="0" 
+          Default Value
+          [ngModel]="0"
+          [ngModel]="initialForm.stock"
+        -->
           <input 
             id="product-stock"
             type="number" 
             class="form-control"
             placeholder="Product Stock"
-            ngModel
             name="stock"
+            ngModel
             required
             customMin
             [minimo]="0"
