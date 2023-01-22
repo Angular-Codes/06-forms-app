@@ -14,7 +14,7 @@
         type="text"
         class="form-control"
         placeholder="Name"
-        ngModel
+        [ngModel]="person.name"
         name="name"
         required
       >
@@ -36,10 +36,14 @@
           type="text"
           class="form-control"
           placeholder="Add favorite game"
+          name="newGame"
+          [(ngModel)]="newGame"
+          (keyup.enter)="addNewGame()"
         >
         <button
           class="btn btn-outline-primary"
           type="button"
+          (click)="addNewGame()"
         >Add</button>
       </div>
     </div>
@@ -49,10 +53,23 @@
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label" >Favorites</label>
     <div class="col-sm-9">
-      <input 
-        type="text"
-        class="form-control mb-1"
+      <div 
+        class="input-group mb-1"
+        *ngFor="let favorite of person.favorites; let i = index"
       >
+        <input 
+          type="text"
+          class="form-control"
+          [(ngModel)]="favorite.name"
+          name="favorite_{{i}}"
+          required
+        >
+        <button
+          class="btn btn-outline-danger"
+          type="button"
+          (click)="deleteFavorite(i)"
+        >Delete</button>
+      </div>
     </div>
   </div>
 
@@ -85,8 +102,10 @@
     <span>Value</span>
     <pre>{{ myForm.value | json }}</pre>
 
-    <span>Control</span>
-    <pre>{{ myForm.controls['name']?.errors | json }}</pre>
+    <span>Person</span>
+    <pre>{{ person | json }}</pre>
 
+    <span>New Game</span>
+    <pre>{{ newGame | json }}</pre>
   </div>
 </div>
