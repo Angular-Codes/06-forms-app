@@ -24,4 +24,8 @@ export class BasicComponent {
     private fb: FormBuilder
   ) { }
 
+  isFieldValid( field: string ){
+    return this.myForm.controls[field].errors && this.myForm.controls[field].touched
+  }
+
 }

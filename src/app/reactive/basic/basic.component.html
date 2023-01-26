@@ -20,6 +20,7 @@
           >
           <small 
             class="text-danger"
+            *ngIf="isFieldValid('name')"
           >
             Must contain at least 3 characters
           </small>
@@ -38,6 +39,7 @@
           >
           <small 
             class="text-danger"
+            *ngIf="isFieldValid('price')"
           >
             Price must be greater than 0
           </small>
@@ -54,6 +56,13 @@
             formControlName="stock"
             placeholder="Product Stock"
           >
+
+          <small 
+            class="text-danger"
+            *ngIf="isFieldValid('stock')"
+          >
+            Stock must be greater than 0
+          </small>
         </div>
       </div>
 
