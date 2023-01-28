@@ -11,7 +11,8 @@
   </li>
 </ul>
 <br>
-<h2>Dynamic</h2>
+
+<h2>Reactive</h2>
 <hr>
 <ul class="list-group">
   <li 
@@ -23,3 +24,18 @@
     {{ item.name }}
   </li>
 </ul>
+<br>
+
+<h2>Validations</h2>
+<hr>
+<ul class="list-group">
+  <li 
+    *ngFor="let item of validationsMenuItems" 
+    class="list-group-item"
+    [routerLink]="item.path"
+    routerLinkActive="active"
+  >
+    {{ item.name }}
+  </li>
+</ul>
+<br>

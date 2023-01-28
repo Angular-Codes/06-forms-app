@@ -24,7 +24,7 @@ export class SideMenuComponent {
     {
       name: 'Switch',
       path: 'template/switch',
-    }
+    },
   ]
 
   reactiveMenuItems: MenuItem[] = [
@@ -39,7 +39,18 @@ export class SideMenuComponent {
     {
       name: 'Switch',
       path: 'reactive/switch',
-    }
+    },
+  ] 
+
+  validationsMenuItems: MenuItem[] = [
+    {
+      name: 'Register',
+      path: 'auth/register',
+    },
+    {
+      name: 'Login',
+      path: 'auth/login',
+    },
   ] 
 
 }
