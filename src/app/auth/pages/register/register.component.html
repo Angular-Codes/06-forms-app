@@ -72,6 +72,12 @@
             placeholder="Password"
             formControlName="password"
           >
+          <span
+            class="form-text text-danger"
+            *ngIf="isNoValidField('password')"
+          >
+            Password is required and must be 6 characters
+          </span>
         </div>
       </div>
 
@@ -84,6 +90,12 @@
             placeholder="Confirm password"
             formControlName="password2"
           >
+          <span
+            class="form-text text-danger"
+            *ngIf="isNoValidField('password2')"
+          >
+            Password should be the same as the previous one
+          </span>
         </div>
       </div>
 
@@ -102,6 +114,9 @@
 </div>
 
 <h4>Form Valid: {{ myForm.valid }}</h4>
+<h4>Form Errors</h4>
+<pre>{{ myForm.errors | json }}</pre>
+
 <h4>Form Invalid: {{ myForm.invalid }}</h4>
 <h4>Name Errors</h4>
 <pre>{{ myForm.controls['name'].errors | json }}</pre>

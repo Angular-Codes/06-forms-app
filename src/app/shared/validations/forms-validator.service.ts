@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormControl, ValidationErrors } from '@angular/forms';
+import { AbstractControl, FormControl, ValidationErrors } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,24 @@ export class FormsValidatorService {
       }
     }
     return null;
+  }
+
+  matchPassword = ( controlName: string, matchingControlName: string ) => {
+
+    return ( control: AbstractControl ): ValidationErrors | null => {
+
+      const controlValue = control.get(controlName)?.value;
+      const matchingControlValue = control.get(matchingControlName)?.value;
+
+      if(controlValue !== matchingControlValue){
+        control.get(matchingControlName)?.setErrors({ notMatchPassword: true })
+        return {
+          notMatchPassword: true
+        }
+      }
+      control.get(matchingControlName)?.setErrors(null)
+      return null;
+    }
   }
   
 }

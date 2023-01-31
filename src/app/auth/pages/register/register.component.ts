@@ -16,6 +16,8 @@ export class RegisterComponent {
     username  : ['', [ Validators.required, this.formsValidatorService.cannotBeKevin ]],
     password  : ['', [ Validators.required, Validators.minLength(6) ]],
     password2 : ['', [ Validators.required ] ],
+  }, {
+    validators: [ this.formsValidatorService.matchPassword('password', 'password2') ]
   })
 
   constructor(
