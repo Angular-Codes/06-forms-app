@@ -4,7 +4,10 @@
 <div class="row">
   <div class="col">
 
-    <form  [formGroup]="myForm" >
+    <form 
+      [formGroup]="myForm" 
+      (ngSubmit)="save()"
+    >
 
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="">Name and lastname</label>
@@ -28,10 +31,17 @@
         <label class="col-sm-3 col-form-label" for="">Email</label>
         <div class="col-sm-9">
           <input 
-          type="email"
-          class="form-control"
-          placeholder="Email"
+            type="email"
+            class="form-control"
+            placeholder="Email"
+            formControlName="email"
           >
+          <span
+            class="form-text text-danger"
+            *ngIf="isNoValidField('email')"
+          >
+            Email is required
+          </span>
         </div>
       </div>
 
@@ -39,10 +49,17 @@
         <label class="col-sm-3 col-form-label" for="">Username</label>
         <div class="col-sm-9">
           <input 
-          type="text"
-          class="form-control"
-          placeholder="Username"
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            formControlName="username"
           >
+          <span
+            class="form-text text-danger"
+            *ngIf="isNoValidField('username')"
+          >
+            Username is required
+          </span>
         </div>
       </div>
 
@@ -53,6 +70,7 @@
             type="password"
             class="form-control"
             placeholder="Password"
+            formControlName="password"
           >
         </div>
       </div>
@@ -64,6 +82,7 @@
             type="password"
             class="form-control"
             placeholder="Confirm password"
+            formControlName="password2"
           >
         </div>
       </div>
@@ -71,6 +90,7 @@
       <div class="row">
         <div class="col">
           <button
+            type="submit"
             class="btn btn-primary float-end"
           >Save</button>
         </div>
@@ -81,7 +101,10 @@
   </div>
 </div>
 
-<h2>Form Valid: {{ myForm.valid }}</h2>
-
-<h2>Name</h2>
+<h4>Form Valid: {{ myForm.valid }}</h4>
+<h4>Form Invalid: {{ myForm.invalid }}</h4>
+<h4>Name Errors</h4>
 <pre>{{ myForm.controls['name'].errors | json }}</pre>
+
+<h4>Name Errors</h4>
+<pre>{{ myForm.controls['username'].errors | json }}</pre>
