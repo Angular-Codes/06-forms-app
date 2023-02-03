@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormsValidatorService } from '../../../shared/validations/forms-validator.service';
 import { nameAndLastnamePattern, emailPattern, cannotBeKevin } from '../../../shared/validations/validations';
+import { EmailValidatorService } from '../../../shared/validations/email-validator.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent {
 
   myForm: FormGroup = this.fb.group({
     name      : ['', [ Validators.required, Validators.pattern( this.formsValidatorService.nameAndLastnamePattern ) ]],
-    email     : ['', [ Validators.required, Validators.pattern( this.formsValidatorService.emailPattern ) ]],
+    email     : ['', [ Validators.required, Validators.pattern( this.formsValidatorService.emailPattern ) ], [ this.emailValidator ]],
     username  : ['', [ Validators.required, this.formsValidatorService.cannotBeKevin ]],
     password  : ['', [ Validators.required, Validators.minLength(6) ]],
     password2 : ['', [ Validators.required ] ],
@@ -22,11 +23,12 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private formsValidatorService: FormsValidatorService
+    private formsValidatorService: FormsValidatorService,
+    private emailValidator: EmailValidatorService
   ){
     this.myForm.reset({
       name      : 'Kevin cuadros',
-      email     : 'kecs@gmaol.com',
+      email     : 'test10@test.com',
       username  : 'kevin_cuadros_',
     })
   }
